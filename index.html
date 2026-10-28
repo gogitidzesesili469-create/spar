@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087443">
+  <title>SPAR საქართველო</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="logo" data-page="home">SPAR<span>◉</span></a>
+    <button class="cart-button" data-page="cart">
+      🛒 კალათა <b id="cartCount">0</b>
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <p class="eyebrow">SPAR საქართველო</p>
+      <h1>შენი საყვარელი პროდუქტები ერთ სივრცეში!</h1>
+      <p>იპოვე პროდუქტები, შეამოწმე დემო ფასები და დაგეგმე საყიდლები.</p>
+      <button class="primary" data-page="deals">ფასდაკლებების ნახვა →</button>
+    </section>
+
+    <div class="search">
+      <span>⌕</span>
+      <input id="searchInput" type="search"
+        placeholder="მოძებნე პროდუქტი...">
+      <button id="clearSearch" aria-label="ძიების გასუფთავება">×</button>
+    </div>
+
+    <nav class="navigation">
+      <button class="nav-btn active" data-page="home">მთავარი</button>
+      <button class="nav-btn" data-page="products">პროდუქტები</button>
+      <button class="nav-btn" data-page="deals">ფასდაკლებები</button>
+      <button class="nav-btn" data-page="stores">ფილიალები</button>
+      <button class="nav-btn" data-page="favorites">რჩეულები</button>
+      <button class="nav-btn" data-page="about">ინფორმაცია</button>
+    </nav>
+
+    <!-- მთავარი გვერდი -->
+    <section class="page active" id="page-home">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">დაათვალიერე</p>
+          <h2>კატეგორიები</h2>
+        </div>
+      </div>
+      <div id="homeCategories" class="categories"></div>
+
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">ჩვენი არჩევანი</p>
+          <h2>პოპულარული პროდუქტები</h2>
+        </div>
+        <button class="text-button" data-page="products">ყველა →</button>
+      </div>
+      <div id="featuredProducts" class="products"></div>
+    </section>
+
+    <!-- პროდუქტები -->
+    <section class="page" id="page-products">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">კატალოგი</p>
+          <h2>ყველა პროდუქტი</h2>
+        </div>
+        <span id="productCount" class="count">0</span>
+      </div>
+      <div id="categoryFilters" class="filters"></div>
+      <div class="sort-row">
+        <span id="resultsLabel">ყველა პროდუქტი</span>
+        <select id="sortSelect" aria-label="პროდუქტების დალაგება">
+          <option value="default">რეკომენდებული</option>
+          <option value="low">იაფიდან ძვირისკენ</option>
+          <option value="high">ძვირიდან იაფისკენ</option>
+          <option value="discount">დიდი ფასდაკლება</option>
+        </select>
+      </div>
+      <div id="allProducts" class="products"></div>
+      <p id="noProducts" class="empty hidden">პროდუქტი ვერ მოიძებნა.</p>
+    </section>
+
+    <!-- ფასდაკლებები -->
+    <section class="page" id="page-deals">
+      <div class="sale-banner">
+        <p class="eyebrow">სპეციალური შეთავაზებები</p>
+        <h2>მეტი არჩევანი,<br>ჭკვიანური საყიდლები!</h2>
+        <p>დაათვალიერე დემო ფასდაკლებები.</p>
+      </div>
+      <div class="section-title">
+        <h2>ფასდაკლებული პროდუქტები</h2>
+      </div>
+      <div id="dealProducts" class="products"></div>
+    </section>
+
+    <!-- ფილიალები -->
+    <section class="page" id="page-stores">
+      <p class="eyebrow">იპოვე მაღაზია</p>
+      <h2>ფილიალები</h2>
+      <p class="muted">მოძებნე ქალაქი. ზუსტი მისამართები ოფიციალურ წყაროში გადაამოწმე.</p>
+      <div class="search store-search">
+        <span>⌕</span>
+        <input id="storeSearch" type="search" placeholder="ქალაქი...">
+        <button id="clearStoreSearch" aria-label="ძიების გასუფთავება">×</button>
+      </div>
+      <div id="storeList" class="store-list"></div>
+      <a class="official-link" href="https://spargeorgia.com/"
+        target="_blank" rel="noopener noreferrer">SPAR Georgia-ის ოფიციალური საიტი ↗</a>
+    </section>
+
+    <!-- რჩეულები -->
+    <section class="page" id="page-favorites">
+      <p class="eyebrow">შენ მიერ შენახული</p>
+      <h2>რჩეული პროდუქტები ❤️</h2>
+      <p class="muted">დააჭირე გულის ღილაკს, რომ პროდუქტი აქ შეინახო.</p>
+      <div id="favoriteProducts" class="products"></div>
+      <p id="noFavorites" class="empty">რჩეულები ჯერ ცარიელია.</p>
+    </section>
+
+    <!-- კალათა -->
+    <section class="page" id="page-cart">
+      <p class="eyebrow">შენი საყიდლების სია</p>
+      <h2>კალათა 🛒</h2>
+      <div id="cartItems" class="cart-items"></div>
+      <div id="cartSummary" class="summary hidden"></div>
+      <p id="emptyCart" class="empty">კალათა ცარიელია. დაამატე პროდუქტები!</p>
+      <button id="clearCart" class="danger-button hidden">კალათის გასუფთავება</button>
+      <button id="finishList" class="primary hidden">სიის დასრულება ✓</button>
+    </section>
+
+    <!-- ინფორმაცია -->
+    <section class="page" id="page-about">
+      <p class="eyebrow">ჩვენ შესახებ</p>
+      <h2>ინფორმაცია SPAR-ზე</h2>
+      <article class="info-card">
+        <h3>🏪 SPAR საქართველო</h3>
+        <p>SPAR არის საცალო ვაჭრობის ქსელი, სადაც იყიდება სასურსათო და ყოველდღიური მოხმარების პროდუქტები.</p>
+      </article>
+      <article class="info-card">
+        <h3>🏷️ ფასები და აქციები</h3>
+        <p>ფასები შეიძლება განსხვავდებოდეს ფილიალისა და მიმდინარე აქციების მიხედვით.</p>
+      </article>
+      <article class="info-card">
+        <h3>🎁 SPAR Club</h3>
+        <p>ლოიალობის პროგრამის აქტუალური პირობები გადაამოწმე ოფიციალურ არხებში.</p>
+      </article>
+      <a class="official-link" href="https://spargeorgia.com/"
+        target="_blank" rel="noopener noreferrer">ოფიციალური ვებსაიტი ↗</a>
+    </section>
+
+    <p class="disclaimer">
+      ⚠️ ეს არის დამოუკიდებელი დემო პროექტი და არა SPAR-ის ოფიციალური აპლიკაცია.
+      ფასები, ფასდაკლებები და ფილიალების ჩანაწერები საილუსტრაციოა.
+    </p>
+  </main>
+
+  <nav class="mobile-nav">
+    <button class="mobile-btn active" data-page="home"><span>⌂</span>მთავარი</button>
+    <button class="mobile-btn" data-page="products"><span>▦</span>პროდუქტები</button>
+    <button class="mobile-btn" data-page="deals"><span>％</span>აქციები</button>
+    <button class="mobile-btn" data-page="cart"><span>🛒</span>კალათა</button>
+    <button class="mobile-btn" data-page="favorites"><span>♡</span>რჩეულები</button>
+  </nav>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>SPAR საქართველო · სასწავლო დემო პროექტი</footer>
+  <script src="script.js"></script>
+</body>
+</html>
